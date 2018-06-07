@@ -17,5 +17,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Te-Chi Liu <liuderchi@gmail.com> (https://github.com/liuderchi)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "sw-precache": "^5.2.1",
+    "uglify-js": "^3.4.0"
+  }
 }
