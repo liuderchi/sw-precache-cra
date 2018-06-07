@@ -1,0 +1,21 @@
+{
+  "name": "sw-precache-cra",
+  "version": "1.0.0-alpha.1",
+  "description":
+    "customize your service worker in create react app without `npm run eject`",
+  "keywords": [
+    "service-worker-precache",
+    "sw-precache",
+    "cli",
+    "create-react-app",
+    "service-worker",
+    "pwa"
+  ],
+  "homepage": "https://github.com/liuderchi/sw-precache-cra",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Te-Chi Liu <liuderchi@gmail.com> (https://github.com/liuderchi)",
+  "license": "MIT"
+}
