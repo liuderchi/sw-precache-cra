@@ -1,12 +1,18 @@
 #!/usr/bin/env node
 
-// sw-precache --config=sw-precache-config.js && uglifyjs build/service-worker.js -m -c join_vars -o build/service-worker.js
-
+const program = require('commander');
 const swPrecache = require('sw-precache');
-const UglifyJS = require("uglify-js");
+const UglifyJS = require('uglify-js');
 const fs = require('fs');
+const path = require('path');
 
-// TODO parse command line option from
+program
+  .version(require('./package.json').version)
+  .usage('[-m] [--config]')
+  .option('-l, --list-config', 'List config for sw-precache')
+  .option('--config <path>', 'Set config file to override the default', String)
+  .option('--no-minify', 'Do not minify service worker script')
+  .parse(process.argv);
 
 const defaultConfig = {
   swFilePath: './build/service-worker.js',
@@ -24,28 +30,35 @@ const defaultConfig = {
   stripPrefix: './build',
 };
 
-const minify = true;  // TODO parse from cli
-swPrecache
-  .generate({
-    ...defaultConfig,
-    // NOTE add user configs to override here
-  })
-  .then(swCode => {
-    fs.writeFile(
-      defaultConfig.swFilePath,
-      minify
-        ? UglifyJS.minify(swCode, {
-            mangle: true,
-            compress: {
-              join_vars: true,
-            },
-          }).code
-        : swCode,
-      error => {
-        if (error) throw error;
-      },
-    );
-  })
-  .catch(error => {
-    throw error;
-  });
+const finalConfig = {
+  ...defaultConfig,
+  ...(program.config ? require(path.resolve(program.config)) : {}),
+};
+
+function minify(code) {
+  return UglifyJS.minify(code, {
+    mangle: true,
+    compress: {
+      join_vars: true,
+    },
+  }).code;
+}
+
+if (program.listConfig) {
+  console.log(finalConfig);
+} else {
+  swPrecache
+    .generate(finalConfig)
+    .then(swCode => {
+      fs.writeFile(
+        defaultConfig.swFilePath,
+        program.minify ? minify(swCode) : swCode,
+        error => {
+          if (error) throw error;
+        },
+      );
+    })
+    .catch(error => {
+      throw error;
+    });
+}

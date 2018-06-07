@@ -18,7 +18,11 @@
   },
   "author": "Te-Chi Liu <liuderchi@gmail.com> (https://github.com/liuderchi)",
   "license": "MIT",
+  "bin": {
+    "sw-precache-cra": "index.js"
+  },
   "dependencies": {
+    "commander": "~2.15.0",
     "sw-precache": "^5.2.1",
     "uglify-js": "^3.4.0"
   }
