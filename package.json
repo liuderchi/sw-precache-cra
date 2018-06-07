@@ -1,6 +1,6 @@
 {
   "name": "sw-precache-cra",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description":
     "customize your service worker in create react app without `npm run eject`",
   "keywords": [
