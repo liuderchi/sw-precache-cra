@@ -6,11 +6,16 @@
 ## The Problem
 
 Create-react-app provides built-in `service-worker.js` but _when you want to extend it_ \
-(e.g. to cache REST API response) you need to do `npm run eject` to maintain configs yourself. \
+(e.g. to cache REST API response) you need to do `npm run eject` and maintain more configs.
 
-Sometimes we just want to enjoy tiny customization but keep those configs unchanged. \
-This cli tool helps you do that with ease.
+Sometimes we just want to enjoy customization but keep those big configs unchanged. \
+This cli tool helps you achieve this with ease.
 
+## Demo
+
+https://sw-precache-cra-demo-cra-contributors.netlify.com/
+
+A page caching GitHub API response with [one simple config][sw-config]. Done in [4 steps][examples-sw-precache-cra]
 
 ## Extend Service Worker in Create React App in 2 steps
 
@@ -71,6 +76,7 @@ module.exports = {
 
 ```bash
 $ sw-precache-cra --list-config
+
 # Print current config for sw-precache
 # If you do not specify a config file, default config by CRA is printed
 #
@@ -88,7 +94,7 @@ $ sw-precache-cra --list-config
   stripPrefix: './build' }
 ```
 
-For more API please check `sw-precache-cra --help`
+For more APIs please do `sw-precache-cra --help`
 
 ## Reference
 
@@ -108,3 +114,7 @@ For more API please check `sw-precache-cra --help`
 [mit-license]: https://liuderchi.mit-license.org/ "mit-license"
 
 [sw-precache-configs]: https://github.com/GoogleChromeLabs/sw-precache#options-parameter "sw-precache-config"
+
+
+[sw-config]: https://github.com/liuderchi/sw-precache-cra/blob/examples/examples/cra-contributors/sw-config.js
+[examples-sw-precache-cra]: https://github.com/liuderchi/sw-precache-cra/commits/examples
