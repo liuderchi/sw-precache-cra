@@ -26,3 +26,15 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.App-contributors {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+.App-contributor {
+  height: 150px;
+  width: 80px;
+  word-wrap: break-word;
+}
